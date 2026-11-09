@@ -1,0 +1,4 @@
+---
+const {type='landing'}=Astro.props;
+---
+<div class={'editorial-art '+type} aria-hidden="true"><div class="editorial-grid"></div>{type==='landing'?<div class="mini-browser"><div class="browser-dots">● ● ●</div><div class="mini-layout"><div><span class="mini-line"></span><b>Una idea.<br/>Un siguiente<br/>paso.</b><span class="mini-button">Conversemos ↗</span></div><div class="glass-cube"><span></span></div></div></div>:type==='commerce'?<><div class="commerce-bag"><span></span><b>t&m.</b></div><div class="commerce-ticket">TU PRÓXIMA IDEA<br/><strong>Al alcance<br/>de un clic.</strong><span>EXPLORAR ↗</span></div></>:<div class="flow-art"><span>01 / ESCUCHAR</span><i></i><span>02 / CONECTAR</span><i></i><span>03 / CONSTRUIR ↗</span><div class="flow-orb"></div></div>}</div>

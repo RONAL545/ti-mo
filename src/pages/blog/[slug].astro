@@ -1,0 +1,10 @@
+---
+import {articles,brand} from '../../content';
+import Brand from '../../components/Brand.astro';
+import EditorialArt from '../../components/EditorialArt.astro';
+import Icon from '../../components/Icon.astro';
+import '../../styles/global.css';
+export function getStaticPaths(){return articles.map(article=>({params:{slug:article.slug},props:{article}}));}
+const {article}=Astro.props;
+---
+<!doctype html><html lang="es"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>{article.title} | Ti & Mo</title><meta name="description" content={article.excerpt}/><meta property="og:title" content={article.title+' | Ti & Mo'}/><meta property="og:description" content={article.excerpt}/><meta property="og:type" content="article"/><link rel="icon" href="/favicon.svg"/></head><body><a class="skip" href="#articulo">Saltar al artículo</a><header><div class="container header-inner"><a href="/" aria-label="Ti & Mo, inicio"><Brand/></a><a href="/#blog" class="text-link">Volver al blog <span>↗</span></a></div></header><main id="articulo" class="article-page"><div class="container article-hero"><span class="eyebrow">{article.category} / {article.read} DE LECTURA</span><h1>{article.title}</h1><p>{article.excerpt}</p><div class="article-byline">Ti & Mo · Contenido educativo para un proyecto académico de marketing</div><EditorialArt type={article.type}/></div><div class="article-body">{article.sections.map(([title,text],i)=><section><span class="article-index">0{i+1}</span><div><h2>{title}</h2><p>{text}</p></div></section>)}<aside class="article-cta"><span class="eyebrow">DE LA IDEA A LA CONVERSACIÓN</span><h2>¿Qué te gustaría construir?</h2><p>Conversemos sobre los retos de tu organización.</p><a href="/#contacto" class="button">Cuéntanos tu proyecto <Icon size={18}/></a></aside><a href="/#blog" class="text-link">← Explorar más artículos</a></div></main><footer><div class="container footer-bottom"><span>© {new Date().getFullYear()} {brand.name}</span><span>Proyecto académico de marketing</span></div></footer></body></html>
